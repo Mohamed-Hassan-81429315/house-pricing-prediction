@@ -1,7 +1,8 @@
 import streamlit as st
 import pickle
 import pandas as pd
-import xgboost as xgb
+
+
 
 model = pickle.load(open('Housing_model.pkl', 'rb'))
 scaler = pickle.load(open('Housing_scaler.pkl', 'rb'))
@@ -11,7 +12,7 @@ scaler = pickle.load(open('Housing_scaler.pkl', 'rb'))
 # except ModuleNotFoundError:
 #     st.error("xgboost is NOT installed!")
 
-st.title("Housing Prices Prediction")
+st.title("Housing Prices Prediction\n Tell Me about the details of your House")
 
 area = st.number_input("Area Of The House", step=1.0 , min_value=1.0)
 bedrooms = st.number_input("Number of Bedrooms", step=1.0 , min_value=1.0)
@@ -32,7 +33,7 @@ furnishingstatus = st.selectbox("Status of the Home",options= ["furnished", "sem
 furnishing_map = {"furnished": 0, "semi-furnished": 1, "unfurnished": 2}
 furnishingstatus = furnishing_map[furnishingstatus]
 
-if st.button("Predict"):
+if st.button("Predict The Housing Price"):
     input_data = pd.DataFrame([{
         "area": area,
         "bedrooms": bedrooms,
@@ -50,6 +51,4 @@ if st.button("Predict"):
     input_scaled = scaler.transform(input_data)
     prediction = model.predict(input_scaled) 
 
-    st.success(f"The Predicted Home Price is: {prediction[0]:,.2f}")
-else :
-    st.title("Fill the following form with valid data")
+    st.success(f" The Predicted Home Price is ->  {prediction[0]:,.2f}$ ")
