@@ -51,4 +51,4 @@ if st.button("Predict The Housing Price"):
     input_scaled = scaler.transform(input_data)
     prediction = model.predict(input_scaled) 
 
-    st.success(f" The Predicted Home Price is ->  {prediction[0]:,.2f}$ ")
+    st.success(f" The Predicted Home Price is ->  {prediction[0]:,.2f} $ ")
