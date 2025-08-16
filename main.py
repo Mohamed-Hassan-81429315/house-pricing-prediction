@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 
 model = joblib.load("Housing_model.pkl")
-scaler = pickle.load(open('Housing_scaler.pkl', 'rb'))
+scaler = joblib.load(open('Housing_scaler.pkl', 'rb'))
 
 # try:
 #     st.success("xgboost is successfully imported!")
