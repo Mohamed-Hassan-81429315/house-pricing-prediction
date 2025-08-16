@@ -3,8 +3,9 @@ import pickle
 import pandas as pd
 
 
+import joblib
 
-model = pickle.load(open('Housing_model.pkl', 'rb'))
+model = joblib.load("Housing_model.pkl")
 scaler = pickle.load(open('Housing_scaler.pkl', 'rb'))
 
 # try:
